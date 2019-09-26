@@ -17,7 +17,6 @@ export class ForecastService {
 
   private endPoint : string = 'https://api.openweathermap.org/data/2.5/forecast';
 
-  //?lat=35&lon=139
   constructor(private http : HttpClient) { 
     this.weather$ = this.weatherSubject.asObservable().pipe(
       map(this.structureData)
@@ -57,6 +56,13 @@ export class ForecastService {
         minMaxTemp : {}
       };
 
+      if (!tempPerDay.cod || hours == 16){
+        let source = weatherElement.weather[0];
+        tempPerDay = {...tempPerDay, ...source};
+        tempPerDay.cod = source.id;
+        tempPerDay.name = data.city.name;
+      } 
+
       if (!tempPerDay.minMaxTemp.min || tempPerDay.minMaxTemp.min > weatherElement.main.temp_min){
         tempPerDay.minMaxTemp.min = weatherElement.main.temp_min;
       }
@@ -69,6 +75,6 @@ export class ForecastService {
 
     });
 
-    return minMaxPerDay;
+    return Object.values(minMaxPerDay);
   }
 }
