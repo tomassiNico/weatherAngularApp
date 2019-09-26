@@ -1,3 +1,8 @@
+$dark : #252a34;
+$accent : #ff2e63;
+$light : #eaeaea;
+$main : #08d9d6;
+
 .card{
     font-weight: slim;
     background: white;
@@ -18,7 +23,16 @@
 }
 
 .card .temp{
-    grid-area: temperature
+    grid-area: temperature;
+    p{
+        margin: 0;
+    }
+    .big{
+        font-size: 2em;
+        margin: 0;
+        color: $main;
+        font-weight: bold;
+    }
 }
 
 .card .icon{
@@ -27,4 +41,10 @@
 
 .card .description{
     grid-area: description;
+    h2{
+        color: $accent;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        letter-spacing: 0.1ch;
+    }
 }
