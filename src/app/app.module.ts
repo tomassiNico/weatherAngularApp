@@ -8,6 +8,9 @@ import { CurrentWeatherComponent } from './components/current-weather/current-we
 import { WeatherIconComponent } from './components/weather-icon/weather-icon.component';
 import { WeatherCardComponent } from './components/weather-card/weather-card.component';
 import { ForecastComponent } from './components/forecast/forecast.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GeolocationButtonComponent } from './components/geolocation-button/geolocation-button.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { ForecastComponent } from './components/forecast/forecast.component';
     CurrentWeatherComponent,
     WeatherIconComponent,
     WeatherCardComponent,
-    ForecastComponent
+    ForecastComponent,
+    LoadingComponent,
+    GeolocationButtonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
