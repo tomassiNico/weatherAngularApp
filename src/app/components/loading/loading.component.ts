@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { loadingAnimation } from 'src/app/animations/loading.animation';
+import { GeolocationService } from 'src/app/services/geolocation.service';
 
 @Component({
   selector: 'app-loading',
@@ -12,7 +13,7 @@ export class LoadingComponent implements OnInit {
   _elements : string[] = ['#3A1787','#915EFF','#6A39D4','#877F09','#D4CA39'];
   public elements : string[] = this._elements;
 
-  constructor() { }
+  constructor(public geolocationService : GeolocationService) { }
 
   ngOnInit() {
     this.set();

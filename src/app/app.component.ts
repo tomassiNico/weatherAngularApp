@@ -11,11 +11,18 @@ import { GeolocationService } from './services/geolocation.service';
 export class AppComponent {
   title = 'weatherApp';
 
+  public permisos : boolean;
+
   constructor(private weatherService : CurrentWeatherService,
-              private forecastService : ForecastService,
               public geolocationService : GeolocationService){
   }
 
   ngOnInit(){
+
+    this.geolocationService.permisos$.then((status)=>{
+      if(status == "granted"){
+        this.geolocationService.requestGeolocation();
+      }
+    })
   }
 }
